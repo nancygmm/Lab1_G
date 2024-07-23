@@ -18,8 +18,6 @@ fn main() {
     framebuffer.set_background_color(0x000000);
     framebuffer.clear();
 
-    framebuffer.set_current_color(0xFFFFFF);
-
     let poligono1 = vec![
         (165, 380), 
         (185, 360), 
@@ -33,7 +31,15 @@ fn main() {
         (193, 383)
     ];
 
+    let poligono1_vec3: Vec<Vec3> = poligono1.iter()
+        .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
+        .collect();
+
+    framebuffer.set_current_color(0x00FFFF);
+    framebuffer.fill_polygon(&poligono1_vec3);
+
+    framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono1);
 
     let _ = framebuffer.render_buffer("output.bmp");
-}   
+}
