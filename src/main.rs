@@ -44,6 +44,27 @@ fn main() {
         (436, 249)
     ];
 
+    let poligono4 = vec![
+        (413, 177),
+        (448, 159),
+        (502, 88),
+        (553, 53),
+        (535, 36),
+        (676, 37),
+        (660, 52),
+        (750, 145),
+        (761, 179),
+        (672, 192),
+        (659, 214),
+        (615, 214),
+        (632, 230),
+        (580, 230),
+        (597, 215),
+        (552, 214),
+        (517, 144),
+        (466, 180)
+    ];
+
     let poligono1_vec3: Vec<Vec3> = poligono1.iter()
         .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
         .collect();
@@ -56,23 +77,33 @@ fn main() {
         .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
         .collect();
 
+    let poligono4_vec3: Vec<Vec3> = poligono4.iter()
+        .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
+        .collect();
+
     framebuffer.set_current_color(0x00FFFF);
     framebuffer.fill_polygon(&poligono1_vec3);
 
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono1);
 
-    framebuffer.set_current_color(0xFF0000);
+    framebuffer.set_current_color(0x0000FF);
     framebuffer.fill_polygon(&poligono2_vec3);
 
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono2);
 
-    framebuffer.set_current_color(0x0000FF);
+    framebuffer.set_current_color(0xFF0000);
     framebuffer.fill_polygon(&poligono3_vec3);
 
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono3);
+
+    framebuffer.set_current_color(0x00FF00);
+    framebuffer.fill_polygon(&poligono4_vec3);
+
+    framebuffer.set_current_color(0xFFFFFF);
+    framebuffer.polygon(&poligono4);
 
     let _ = framebuffer.render_buffer("output.bmp");
 }
