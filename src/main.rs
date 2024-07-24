@@ -98,13 +98,13 @@ fn main() {
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono1);
 
-    framebuffer.set_current_color(0x0000FF);
+    framebuffer.set_current_color(0xFF0000);
     framebuffer.fill_polygon(&poligono2_vec3);
 
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono2);
 
-    framebuffer.set_current_color(0xFF0000);
+    framebuffer.set_current_color(0x0000FF);
     framebuffer.fill_polygon(&poligono3_vec3);
 
     framebuffer.set_current_color(0xFFFFFF);
