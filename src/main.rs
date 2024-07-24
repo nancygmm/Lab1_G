@@ -65,6 +65,13 @@ fn main() {
         (466, 180)
     ];
 
+    let poligono5 = vec![
+        (682, 175),
+        (708, 120),
+        (735, 148),
+        (739, 170)
+    ];
+
     let poligono1_vec3: Vec<Vec3> = poligono1.iter()
         .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
         .collect();
@@ -78,6 +85,10 @@ fn main() {
         .collect();
 
     let poligono4_vec3: Vec<Vec3> = poligono4.iter()
+        .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
+        .collect();
+
+    let poligono5_vec3: Vec<Vec3> = poligono5.iter()
         .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
         .collect();
 
@@ -104,6 +115,12 @@ fn main() {
 
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono4);
+
+    framebuffer.set_current_color(0x000000);
+    framebuffer.fill_polygon(&poligono5_vec3);
+
+    framebuffer.set_current_color(0xFFFFFF);
+    framebuffer.polygon(&poligono5);
 
     let _ = framebuffer.render_buffer("output.bmp");
 }
