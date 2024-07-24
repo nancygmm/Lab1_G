@@ -31,7 +31,18 @@ fn main() {
         (193, 383)
     ];
 
+    let poligono2 = vec![
+        (321, 335),
+        (288, 286),
+        (339, 251),
+        (374, 302)
+    ];
+
     let poligono1_vec3: Vec<Vec3> = poligono1.iter()
+        .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
+        .collect();
+
+    let poligono2_vec3: Vec<Vec3> = poligono2.iter()
         .map(|&(x, y)| Vec3::new(x as f32, y as f32, 0.0))
         .collect();
 
@@ -40,6 +51,12 @@ fn main() {
 
     framebuffer.set_current_color(0xFFFFFF);
     framebuffer.polygon(&poligono1);
+
+    framebuffer.set_current_color(0xFF0000);
+    framebuffer.fill_polygon(&poligono2_vec3);
+
+    framebuffer.set_current_color(0xFFFFFF);
+    framebuffer.polygon(&poligono2);
 
     let _ = framebuffer.render_buffer("output.bmp");
 }
